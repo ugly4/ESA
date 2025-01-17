@@ -28,7 +28,7 @@ public class Album {
     @Column(name = "LABEL")
     private String label;
 
-    @Column(name = "ARTIST_ID")
+    @Column(name = "ARTIST_ID", nullable = false)
     private UUID artistId;
 
     public Album(UUID id, String name, Integer year, String genre, String label, UUID artistId) {

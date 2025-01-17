@@ -16,7 +16,7 @@ public class Song {
     @Column(name = "ID")
     private UUID id;
 
-    @Column(name = "NAME")
+    @Column(name = "NAME", nullable = false)
     private String name;
 
     @Column(name = "DURATION")
@@ -28,7 +28,7 @@ public class Song {
     @Column(name = "ALBUM_ID")
     private UUID albumId;
 
-    @Column(name = "ARTIST_ID")
+    @Column(name = "ARTIST_ID", nullable = false)
     private UUID artistId;
 
     public Song(UUID id, String name, Long duration, Boolean explicitContent, UUID albumId,
