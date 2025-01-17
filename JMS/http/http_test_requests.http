@@ -1,0 +1,17 @@
+PUT http://localhost:8080/api/v1/libraries
+Content-Type: application/json
+
+{
+  "name": "test_library",
+  "address": "unknown"
+}
+
+###
+POST http://localhost:8080/api/v1/libraries
+Content-Type: application/json
+
+{
+  "id": 10,
+  "name": "test_library",
+  "address": "Samara"
+}
