@@ -56,6 +56,6 @@ public class AlbumServiceBean implements AlbumService {
 
     @Override
     public List<Album> getAlbumsByArtist(Artist artist) {
-        return albumRepository.findAlbumsByArtist(artist);
+        return albumRepository.findAlbumsByArtist(artist.getId());
     }
 }

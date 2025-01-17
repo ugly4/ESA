@@ -42,15 +42,15 @@ public class ArtistController {
         return "artistContent";
     }
 
-    @PostMapping
-    public String saveLibrary(@ModelAttribute Album album) {
+    @PostMapping("/album")
+    public String saveAlbum(@ModelAttribute Album album) {
         albumServiceBean.save(album);
-        return "redirect:/artistContent";
+        return String.format("redirect:/artist/%s", album.getArtist().getId());
     }
 
-    @PostMapping
-    public String saveLibrary(@ModelAttribute Song song) {
+    @PostMapping("/song")
+    public String saveSong(@ModelAttribute Song song) {
         songServiceBean.save(song);
-        return "redirect:/artistContent";
+        return String.format("redirect:/artist/%s", song.getArtist().getId());
     }
 }

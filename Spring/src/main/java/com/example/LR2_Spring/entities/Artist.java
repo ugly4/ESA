@@ -12,7 +12,7 @@ public class Artist implements BaseEntity<UUID> {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name = "NAME", nullable = false)

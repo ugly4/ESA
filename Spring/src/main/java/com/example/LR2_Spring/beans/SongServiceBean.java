@@ -56,7 +56,7 @@ public class SongServiceBean implements SongService {
 
     @Override
     public List<Song> getSongsByArtist(Artist artist) {
-        return songRepository.findSongsByArtist(artist);
+        return songRepository.findSongsByArtist(artist.getId());
     }
 }
 
