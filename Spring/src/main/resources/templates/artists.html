@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Artist</title>
+    </head>
+
+    <body>
+        <h1>Artists</h1>
+        <ul>
+            <th:block th:each="artist : ${artists}">
+                <li>
+                    <span th:text="${artist.name}"></span>
+                </li>
+            </th:block>
+        </ul>
+        <form method="post" action="/artists">
+            <h3>Add a New Artist</h3>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <button type="submit">Add Artist</button>
+        </form>
+    </body>
+</html>

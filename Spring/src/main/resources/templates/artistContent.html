@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Artist</title>
+    </head>
+
+    <body>
+
+        <h1>
+            <p th:text="${artist.name}">
+        </h1>
+
+        <h2>Albums</h2>
+
+        <ul>
+            <th:block th:each="album : ${albums}">
+                <li>
+                    <span th:text="${album.name}"></span>
+                    <span th:text="${album.year}"></span>
+                    <span th:text="${album.genre}"></span>
+                    <span th:text="${album.label}"></span>
+                </li>
+            </th:block>
+        </ul>
+
+        <form method="post" action="/artist">
+            <h3>Add a New Album</h3>
+            <label for="albumTitle">Title:</label>
+            <input type="text" id="albumTitle" name="albumTitle">
+            <label for="albumYear">Year:</label>
+            <input type="number" id="albumYear" name="albumYear">
+            <label for="albumGenre">Genre:</label>
+            <input type="text" id="albumGenre" name="albumGenre">
+            <label for="albumLabel">Label:</label>
+            <input type="text" id="albumLabel" name="albumLabel">
+            <button type="submit">Add Album</button>
+        </form>
+
+        <h2>Songs</h2>
+
+        <ul>
+            <th:block th:each="song : ${songs}">
+                <li>
+                    <span th:text="${song.name}"></span>
+                    <span th:text="${song.duration/60}, ${song.duration%60}"></span>
+                    <span th:text="${song.explicitContent}"></span>
+                </li>
+            </th:block>
+        </ul>
+
+        <form method="post" action="/artist">
+            <h3>Add a New Song</h3>
+            <label for="songTitle">Title:</label>
+            <input type="text" id="songTitle" name="songTitle">
+            <label for="songDuration">Duration:</label>
+            <input type="number" id="songDuration" name="songDuration">
+            <label for="explicitContent">Explicit content</label>
+            <input type="checkbox" id="explicitContent" name="explicitContent">
+            <button type="submit">Add Song</button>
+        </form>
+    </body>
+</html>
