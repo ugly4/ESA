@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: LR2_Spring
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: root
+    password: qwerty
+    url: jdbc:postgresql://localhost:5432/esa
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  thymeleaf:
+    cache: false
+server:
+  port: 8090
