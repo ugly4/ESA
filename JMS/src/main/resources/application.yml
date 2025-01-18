@@ -4,8 +4,8 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     username: root
-    password: 1234
-    url: jdbc:postgresql://localhost:5432/library_db
+    password: qwerty
+    url: jdbc:postgresql://localhost:5432/esa
   jpa:
     hibernate:
       ddl-auto: update
@@ -13,15 +13,15 @@ spring:
   thymeleaf:
     cache: false
   artemis:
-    user: admin
-    password: admin
+    user: artemis
+    password: artemis
   jms:
     pub-sub-domain: true
   mail:
     host: smtp.gmail.com
     port: 587
     username: ttestov710@gmail.com
-    password: xnaazaerlcozpgcz
+    password: ***
     properties:
       mail:
         smtp:
@@ -31,3 +31,5 @@ spring:
 app:
   audit:
     topic: audit.queue
+server:
+  port: 8090

@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @Table(name = "ESA_AUDIT_EVENTS")
 public class AuditEvent {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private UUID id;
 

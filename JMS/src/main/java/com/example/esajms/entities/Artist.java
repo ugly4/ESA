@@ -16,7 +16,7 @@ public class Artist implements BaseEntity<UUID> {
 
     @Id
     @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(name = "NAME", nullable = false)
@@ -45,6 +45,11 @@ public class Artist implements BaseEntity<UUID> {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Artist{" + "id=" + id + ", name='" + name + '\'' + '}';
     }
 }
 

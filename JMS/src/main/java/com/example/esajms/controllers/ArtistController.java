@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/artists")
 public class ArtistController {
 
     private final ArtistServiceBean artistServiceBean;
@@ -31,7 +31,7 @@ public class ArtistController {
 
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
     public String getLibraries() throws TransformerException, IOException {
-        String xmlData = artistServiceBean.getAsXml(); // Создайте метод, возвращающий XML
+        String xmlData = artistServiceBean.getAsXml();
 
         Resource xslResource = resourceLoader.getResource("classpath:templates/artists.xsl");
         StreamSource xslStreamSource = new StreamSource(xslResource.getInputStream());

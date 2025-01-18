@@ -1,5 +1,6 @@
 package com.example.esajms.beans;
 
+import com.example.esajms.audit.service.AuditService;
 import com.example.esajms.dto.AlbumDto;
 import com.example.esajms.entities.Album;
 import com.example.esajms.entities.Artist;
@@ -17,10 +18,15 @@ import java.util.NoSuchElementException;
 public class AlbumServiceBean implements AlbumService {
 
     private final AlbumRepository albumRepository;
+    private final AuditService auditService;
+    private final ArtistServiceBean artistService;
 
     @Autowired
-    public AlbumServiceBean(AlbumRepository bookRepository) {
+    public AlbumServiceBean(AlbumRepository bookRepository, AuditService auditService,
+        ArtistServiceBean artistService) {
         this.albumRepository = bookRepository;
+        this.auditService = auditService;
+        this.artistService = artistService;
     }
 
     @Override
@@ -37,15 +43,19 @@ public class AlbumServiceBean implements AlbumService {
 
     @Override
     public void save(AlbumDto dto) {
-        albumRepository.save(AlbumMapper.toEntity(dto));
+        Album album = AlbumMapper.toEntity(dto);
+        album.setArtist(artistService.findById(dto.getArtist()));
+        Album newAlbum = albumRepository.save(album);
+        auditService.insertAuditEvent(newAlbum);
     }
 
     @Override
     public void delete(UUID id) {
-        albumRepository.findById(id).orElseThrow(
+        Album album = albumRepository.findById(id).orElseThrow(
                 () -> new NoSuchElementException("No Album found with id: " + id)
         );
         albumRepository.deleteById(id);
+        auditService.deleteAuditEvent(album);
     }
 
     @Override
@@ -53,7 +63,8 @@ public class AlbumServiceBean implements AlbumService {
         albumRepository.findById(entity.getId()).orElseThrow(
                 () -> new NoSuchElementException("No Album found with id: " + entity.getId())
         );
-        albumRepository.save(entity);
+        Album album = albumRepository.save(entity);
+        auditService.updateAuditEvent(album);
     }
 
     @Override

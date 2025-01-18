@@ -16,7 +16,7 @@ import java.util.UUID;
 @Table(name = "ESA_SONGS")
 public class Song implements BaseEntity<UUID> {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID")
     private UUID id;
 
@@ -34,7 +34,7 @@ public class Song implements BaseEntity<UUID> {
     private Album album;
 
     @ManyToOne
-    @Column(name = "ARTIST_ID", nullable = false)
+    @JoinColumn(name = "ARTIST_ID", nullable = false)
     private Artist artist;
 
     public Song(UUID id, String name, Long duration, Boolean explicitContent, Album album,
@@ -97,6 +97,13 @@ public class Song implements BaseEntity<UUID> {
 
     public void setArtist(Artist artist) {
         this.artist = artist;
+    }
+
+    @Override
+    public String toString() {
+        return "Song{" + "id=" + id + ", name='" + name + '\'' + ", duration=" + duration
+            + ", explicitContent=" + explicitContent + ", album=" + album + ", artist=" + artist
+            + '}';
     }
 }
 

@@ -1,5 +1,6 @@
 package com.example.esajms.beans;
 
+import com.example.esajms.audit.service.AuditService;
 import com.example.esajms.dto.ArtistDto;
 import com.example.esajms.entities.Artist;
 import com.example.esajms.mappers.ArtistMapper;
@@ -16,10 +17,12 @@ import java.util.List;
 public class ArtistServiceBean implements BaseService<Artist, ArtistDto, UUID>, XmlConvertService {
 
     private final ArtistRepository artistRepository;
+    private final AuditService auditService;
 
     @Autowired
-    public ArtistServiceBean(ArtistRepository libraryRepository) {
+    public ArtistServiceBean(ArtistRepository libraryRepository, AuditService auditService) {
         this.artistRepository = libraryRepository;
+        this.auditService = auditService;
     }
 
     @Override
@@ -36,15 +39,17 @@ public class ArtistServiceBean implements BaseService<Artist, ArtistDto, UUID>, 
 
     @Override
     public void save(ArtistDto dto) {
-        artistRepository.save(ArtistMapper.toEntity(dto));
+        Artist artist = artistRepository.save(ArtistMapper.toEntity(dto));
+        auditService.insertAuditEvent(artist);
     }
 
     @Override
     public void delete(UUID id) {
-        artistRepository.findById(id).orElseThrow(
+        Artist artist = artistRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("No artist found with id: " + id)
         );
         artistRepository.deleteById(id);
+        auditService.deleteAuditEvent(artist);
     }
 
     @Override
@@ -52,7 +57,8 @@ public class ArtistServiceBean implements BaseService<Artist, ArtistDto, UUID>, 
         artistRepository.findById(entity.getId()).orElseThrow(
                 () -> new RuntimeException("No artist found with id: " + entity.getId())
         );
-        artistRepository.save(entity);
+        Artist artist = artistRepository.save(entity);
+        auditService.updateAuditEvent(artist);
     }
 
     public String getAsXml() {

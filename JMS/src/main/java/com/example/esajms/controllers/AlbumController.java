@@ -30,7 +30,7 @@ public class AlbumController {
 
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
     public String getAlbums() throws IOException, TransformerException {
-        String xmlData = albumService.getAsXml(); // Создайте метод, возвращающий XML
+        String xmlData = albumService.getAsXml();
 
         Resource xslResource = resourceLoader.getResource("classpath:templates/albums.xsl");
         StreamSource xslStreamSource = new StreamSource(xslResource.getInputStream());

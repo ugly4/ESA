@@ -1,10 +1,13 @@
 package com.example.esajms.beans;
 
+import com.example.esajms.audit.service.AuditService;
 import com.example.esajms.dto.SongDto;
+import com.example.esajms.entities.Album;
 import com.example.esajms.entities.Artist;
 import com.example.esajms.entities.Song;
 import com.example.esajms.mappers.SongMapper;
 import com.example.esajms.repositories.SongRepository;
+import com.example.esajms.services.AlbumService;
 import com.example.esajms.services.SongService;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +19,17 @@ import java.util.List;
 public class SongServiceBean implements SongService {
 
     private final SongRepository songRepository;
+    private final ArtistServiceBean artistServiceBean;
+    private final AlbumService albumService;
+    private final AuditService auditService;
 
     @Autowired
-    public SongServiceBean(SongRepository songRepository) {
+    public SongServiceBean(SongRepository songRepository, AuditService auditService,
+        ArtistServiceBean artistServiceBean, AlbumService albumService) {
         this.songRepository = songRepository;
+        this.auditService = auditService;
+        this.artistServiceBean = artistServiceBean;
+        this.albumService = albumService;
     }
 
     @Override
@@ -36,15 +46,22 @@ public class SongServiceBean implements SongService {
 
     @Override
     public void save(SongDto dto) {
-        songRepository.save(SongMapper.toEntity(dto));
+        Song song = SongMapper.toEntity(dto);
+        Artist artist = artistServiceBean.findById(dto.getArtist());
+        Album album = albumService.findById(dto.getAlbum());
+        song.setArtist(artist);
+        song.setAlbum(album);
+        song = songRepository.save(song);
+        auditService.insertAuditEvent(song);
     }
 
     @Override
     public void delete(UUID id) {
-        songRepository.findById(id).orElseThrow(
+        Song song = songRepository.findById(id).orElseThrow(
             () -> new RuntimeException("No song found with id: " + id)
         );
         songRepository.deleteById(id);
+        auditService.deleteAuditEvent(song);
     }
 
     @Override
@@ -52,7 +69,8 @@ public class SongServiceBean implements SongService {
         songRepository.findById(entity.getId()).orElseThrow(
             () -> new RuntimeException("No song found with id: " + entity.getId())
         );
-        songRepository.save(entity);
+        Song song = songRepository.save(entity);
+        auditService.updateAuditEvent(song);
     }
 
     @Override
@@ -69,9 +87,9 @@ public class SongServiceBean implements SongService {
             xmlBuilder.append("<song>")
                 .append("<artist>").append(song.getArtist().getName()).append("</artist>")
                 .append("<name>").append(song.getName()).append("</name>")
-                .append("<album>").append(song.getAlbum().getName()).append("</name>")
-                .append("<duration>").append(song.getDuration()).append("</duration>")
-                .append("<explicitContent>").append(song.getExplicitContent()).append("</explicitContent>")
+                .append("<album>").append(song.getAlbum() != null ? song.getAlbum().getName() : "").append("</album>")
+                .append("<duration>").append(String.format("%s:%s", song.getDuration()/60, song.getDuration()%60)).append("</duration>")
+                .append("<explicitContent>").append(song.getExplicitContent() ? "!" : "").append("</explicitContent>")
                 .append("</song>");
         }
         xmlBuilder.append("</songs>");
