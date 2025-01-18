@@ -21,3 +21,9 @@
 Реализуйте уровень представления с помощью Spring MVC.
 #### Задача 5
 Сделайте так, чтобы все работало вместе…
+
+#### В итоге получили следующее:
+
+![Spring_1](https://github.com/user-attachments/assets/ccf74ae2-e756-44a0-b28d-b96f12152b7f)
+![Spring_2](https://github.com/user-attachments/assets/6812cb0b-42a3-4338-ba16-fb804daa58fd)
+
