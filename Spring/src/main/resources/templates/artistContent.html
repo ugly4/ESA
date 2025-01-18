@@ -8,6 +8,8 @@
 
     <body>
 
+        <a href="/artists">Back</a>
+
         <h1>
             <p th:text="${artist.name}">
         </h1>
@@ -17,25 +19,20 @@
         <ul>
             <th:block th:each="album : ${albums}">
                 <li>
-                    <span th:text="${album.name}"></span>
-                    <span th:text="${album.year}"></span>
-                    <span th:text="${album.genre}"></span>
-                    <span th:text="${album.label}"></span>
+                    <span th:text="|&quot;${album.name}&quot;|"></span>
+                    <span th:text="|(${album.year})|"></span>
+                    <span th:text="|[${album.genre}]|"></span>
+                    <span th:text="|/${album.label}|"></span>
                 </li>
             </th:block>
         </ul>
 
         <form method="post" action="/artist/album">
             <h3>Add a New Album</h3>
-            <label for="albumTitle">Title:</label>
-            <input type="text" id="albumTitle" name="name">
-            <label for="albumYear">Year:</label>
-            <input type="number" id="albumYear" name="year">
-            <label for="albumGenre">Genre:</label>
-            <input type="text" id="albumGenre" name="genre">
-            <label for="albumLabel">Label:</label>
-            <input type="text" id="albumLabel" name="label">
-            <label for="albumArtist"></label>
+            <input placeholder="Title" type="text" id="albumTitle" name="name">
+            <input placeholder="Year" type="number" id="albumYear" name="year">
+            <input placeholder="Genre" type="text" id="albumGenre" name="genre">
+            <input placeholder="Label" type="text" id="albumLabel" name="label">
             <input type="hidden" th:value="${artist.id}" id="albumArtist" name="artist">
             <button type="submit">Add Album</button>
         </form>
@@ -45,23 +42,31 @@
         <ul>
             <th:block th:each="song : ${songs}">
                 <li>
-                    <span th:text="${song.name}"></span>
-                    <span th:text="${song.duration}"></span>
-                    <span th:text="${song.explicitContent}"></span>
+                    <span th:text="|&quot;${song.name}&quot;|"></span>
+                    <span th:text="|${song.duration/60}:${song.duration%60}|"></span>
+                    <span th:text="${song.explicitContent} ? '(18+)' : ''"></span>
+                    <th:block th:each="album : ${albums}">
+                        <span th:if="${song.album} != null AND ${song.album.id == album.id}" th:text="|[&quot;${album.name}&quot;]|"></span>
+                    </th:block>
+
                 </li>
             </th:block>
         </ul>
 
         <form method="post" action="/artist/song">
             <h3>Add a New Song</h3>
-            <label for="songTitle">Title:</label>
-            <input type="text" id="songTitle" name="name">
-            <label for="songDuration">Duration:</label>
-            <input type="number" id="songDuration" name="duration">
+            <input placeholder="Title" type="text" id="songTitle" name="name">
+            <input placeholder="Duration in s." type="number" id="songDuration" name="duration">
+            <label for="songAlbum">Album</label>
+            <select id="songAlbum" name="album">
+                <option th:value="${null}">Choose album</option>
+                <th:block th:each="album : ${albums}">
+                    <option th:value="${album.id}" th:text="${album.name}"></option>
+                </th:block>
+            </select>
             <label for="explicitContent">Explicit content</label>
             <input type="checkbox" id="explicitContent" name="explicitContent">
-            <label for="artist"></label>
-            <input type="hidden" th:value="${artist.id}" id="artist" name="artist">
+            <input type="hidden" th:value="${artist.id}" id="songArtist" name="artist">
             <button type="submit">Add Song</button>
         </form>
     </body>

@@ -1,6 +1,6 @@
-package com.example.LR2_Spring.entities;
+package com.example.esarest.entities;
 
-import com.example.LR2_Spring.entities.base.BaseEntity;
+import com.example.esarest.entities.base.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

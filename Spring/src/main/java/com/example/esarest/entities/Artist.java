@@ -1,10 +1,9 @@
-package com.example.LR2_Spring.entities;
+package com.example.esarest.entities;
 
 
-import com.example.LR2_Spring.entities.base.BaseEntity;
+import com.example.esarest.entities.base.BaseEntity;
 import jakarta.persistence.*;
 import java.util.UUID;
-import lombok.Data;
 
 @Entity(name = "esa$Artists")
 @Table(name = "ESA_ARTISTS")

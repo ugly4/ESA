@@ -1,7 +1,7 @@
-package com.example.LR2_Spring.controllers;
+package com.example.esarest.controllers;
 
-import com.example.LR2_Spring.entities.Artist;
-import com.example.LR2_Spring.beans.ArtistServiceBean;
+import com.example.esarest.entities.Artist;
+import com.example.esarest.beans.ArtistServiceBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;

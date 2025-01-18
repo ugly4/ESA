@@ -1,6 +1,5 @@
-package com.example.LR2_Spring;
+package com.example.esarest;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest

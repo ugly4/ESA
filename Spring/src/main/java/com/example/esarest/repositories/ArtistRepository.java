@@ -1,6 +1,6 @@
-package com.example.LR2_Spring.repositories;
+package com.example.esarest.repositories;
 
-import com.example.LR2_Spring.entities.Artist;
+import com.example.esarest.entities.Artist;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

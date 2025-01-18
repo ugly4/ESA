@@ -1,11 +1,11 @@
-package com.example.LR2_Spring.controllers;
+package com.example.esarest.controllers;
 
-import com.example.LR2_Spring.beans.ArtistServiceBean;
-import com.example.LR2_Spring.entities.Album;
-import com.example.LR2_Spring.entities.Artist;
-import com.example.LR2_Spring.entities.Song;
-import com.example.LR2_Spring.beans.AlbumServiceBean;
-import com.example.LR2_Spring.beans.SongServiceBean;
+import com.example.esarest.beans.ArtistServiceBean;
+import com.example.esarest.entities.Album;
+import com.example.esarest.entities.Artist;
+import com.example.esarest.entities.Song;
+import com.example.esarest.beans.AlbumServiceBean;
+import com.example.esarest.beans.SongServiceBean;
 import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

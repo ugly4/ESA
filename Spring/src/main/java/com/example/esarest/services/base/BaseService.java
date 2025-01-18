@@ -1,7 +1,7 @@
-package com.example.LR2_Spring.services.base;
+package com.example.esarest.services.base;
 
 
-import com.example.LR2_Spring.entities.base.BaseEntity;
+import com.example.esarest.entities.base.BaseEntity;
 
 import java.util.List;
 

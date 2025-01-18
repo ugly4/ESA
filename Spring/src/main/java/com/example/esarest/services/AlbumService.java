@@ -1,8 +1,8 @@
-package com.example.LR2_Spring.services;
+package com.example.esarest.services;
 
-import com.example.LR2_Spring.entities.Album;
-import com.example.LR2_Spring.entities.Artist;
-import com.example.LR2_Spring.services.base.BaseService;
+import com.example.esarest.entities.Album;
+import com.example.esarest.entities.Artist;
+import com.example.esarest.services.base.BaseService;
 import java.util.List;
 import java.util.UUID;
 
