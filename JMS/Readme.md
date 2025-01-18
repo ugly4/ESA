@@ -24,3 +24,14 @@
 Возможно, потребуется какое-то дополнительное занятие.
 #### Задача 7
 Заставьте все работать вместе…
+
+#### В итоге получили следующее:
+
+![JMS_1](https://github.com/user-attachments/assets/81a4592c-0d32-4e6e-9e23-88b321b3d185)
+![JMS_2](https://github.com/user-attachments/assets/7b345744-6498-4da9-ad7c-a8a8ae3f2f38)
+![JMS_3](https://github.com/user-attachments/assets/6c3d66df-788a-4be8-b764-5ac74f91dcd7)
+![JMS_4](https://github.com/user-attachments/assets/9f956075-7a90-455e-b049-57dd4ca281a3)
+![JMS_5](https://github.com/user-attachments/assets/65a07c6e-e51e-496b-923e-6d817d8b507f)
+![JMS_6](https://github.com/user-attachments/assets/4adf2512-5bec-403b-95b1-e49581272eff)
+![JMS_7](https://github.com/user-attachments/assets/3aa5c530-e0cb-48fc-b891-fb8dc90707f5)
+
