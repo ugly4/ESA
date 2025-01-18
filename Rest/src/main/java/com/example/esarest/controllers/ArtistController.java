@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 @RestController
-@RequestMapping("/")
+@RequestMapping("/artists")
 public class ArtistController {
 
     private final ArtistServiceBean artistServiceBean;

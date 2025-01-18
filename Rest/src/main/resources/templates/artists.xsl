@@ -15,7 +15,7 @@
                         <th>UUID</th>
                         <th>Name</th>
                     </tr>
-                    <xsl:for-each select="artist/artist">
+                    <xsl:for-each select="artists/artist">
                         <tr>
                             <td><xsl:value-of select="id"/></td>
                             <td><xsl:value-of select="name"/></td>

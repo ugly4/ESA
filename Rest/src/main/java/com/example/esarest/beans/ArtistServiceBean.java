@@ -66,7 +66,7 @@ public class ArtistServiceBean implements BaseService<Artist, ArtistDto, UUID>, 
                 .append("<name>").append(artist.getName()).append("</name>")
                 .append("</artist>");
         }
-        xmlBuilder.append("</libraries>");
+        xmlBuilder.append("</artists>");
         return xmlBuilder.toString();
     }
 }

@@ -75,7 +75,7 @@ public class AlbumServiceBean implements AlbumService {
             Artist artist = artistServiceBean.findById(album.getArtist().getId());
 
             xmlBuilder.append("<album>")
-                .append("<artist>").append(artist == null ? "" : artist.getName()).append("</artist>")
+                .append("<artist>").append(artist.getName()).append("</artist>")
                 .append("<name>").append(album.getName()).append("</name>")
                 .append("<year>").append(album.getYear()).append("</year>")
                 .append("<genre>").append(album.getGenre()).append("</genre>")
