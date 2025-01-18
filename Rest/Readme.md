@@ -21,3 +21,11 @@
 Добавьте XSLT ко всем XML-ответам.
 #### Задача 6
 Сделайте так, чтобы все работало вместе…
+
+#### В итоге получили следующее:
+
+![Rest_1](https://github.com/user-attachments/assets/5c0e1561-9872-44a8-9419-0c535cfd847d)
+![Rest_2](https://github.com/user-attachments/assets/9c008a7a-0653-438b-aa53-5dfac8b12595)
+![Rest_3](https://github.com/user-attachments/assets/e23b792f-ae87-4d4e-abe9-3ad55d6e888e)
+![Rest_4](https://github.com/user-attachments/assets/9829bb37-1e5f-4b29-bef5-314d71d33e25)
+
