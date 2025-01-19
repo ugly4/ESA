@@ -1,19 +1,21 @@
 package com.esaee.models;
 
+import com.esaee.converter.UUIDConverter;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.eclipse.persistence.annotations.Convert;
+import org.eclipse.persistence.annotations.Converter;
 
 @Entity(name = "esa$Songs")
 @Table(name = "ESA_SONGS")
+@Converter(name = "uuidConverter", converterClass = UUIDConverter.class)
 public class Song {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "ID", nullable = false)
+    @Convert("uuidConverter")
     private UUID id;
 
     @Column(name = "NAME", nullable = false)
@@ -26,9 +28,11 @@ public class Song {
     private Boolean explicitContent;
 
     @Column(name = "ALBUM_ID")
+    @Convert("uuidConverter")
     private UUID albumId;
 
     @Column(name = "ARTIST_ID", nullable = false)
+    @Convert("uuidConverter")
     private UUID artistId;
 
     public Song(UUID id, String name, Long duration, Boolean explicitContent, UUID albumId,

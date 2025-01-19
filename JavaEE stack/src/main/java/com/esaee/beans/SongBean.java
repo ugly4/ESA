@@ -1,6 +1,5 @@
 package com.esaee.beans;
 
-import com.esaee.models.Album;
 import com.esaee.models.Song;
 import java.util.List;
 import java.util.UUID;

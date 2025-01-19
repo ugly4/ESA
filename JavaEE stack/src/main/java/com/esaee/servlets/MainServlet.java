@@ -2,14 +2,14 @@ package com.esaee.servlets;
 
 import com.esaee.models.Artist;
 import com.esaee.services.ArtistService;
-import java.io.*;
+import java.io.IOException;
 import java.util.UUID;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet(name = "main", value = "/main")
+@WebServlet("")
 public class MainServlet extends HttpServlet {
     @EJB
     private ArtistService artistService;
@@ -35,7 +35,7 @@ public class MainServlet extends HttpServlet {
 
             Artist artist = new Artist();
             artist.setName(name);
-
+            artist.setId(UUID.randomUUID());
             artistService.createArtist(artist);
         } else if ("delete".equals(action)) {
             UUID id = UUID.fromString(request.getParameter("id"));

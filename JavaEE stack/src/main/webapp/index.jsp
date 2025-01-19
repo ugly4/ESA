@@ -4,32 +4,45 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>JAVA music</title>
-</head>
-<body>
-<% List<Artist> artists = (List<Artist>) request.getAttribute("artists");%>
+    <head>
+        <title>JAVA music</title>
+    </head>
 
-<h2>Create Artist</h2>
-<form action="artists" method="post">
-    <input type="text" name="name" placeholder="Artist Name" required>
-    <input type="hidden" name="action" value="add">
-    <button type="submit">Create Artist</button>
-</form>
+    <body>
+        <h1>JAVA Music</h1>
+        <a href="/albums">Albums</a>
+        <a href="/songs">Songs</a>
+        <% List<Artist> artists = (List<Artist>) request.getAttribute("artists");%>
 
-<table>
-    <thead>
-    <tr>
-        <th>Name</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% for (Artist artist : artists) { %>
-    <tr>
-        <td><a href="artist/<%=artist.getName()%>"><%= artist.getName() %></a>
-    </tr>
-    <% } %>
-    </tbody>
-</table>
-</body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+            <% for (Artist artist : artists) { %>
+                <tr>
+                    <td><%= artist.getName() %> </td>
+                    <td>
+                        <form action="" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="<%= artist.getId() %>">
+                            <input type="hidden" name="action" value="delete">
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+
+        <h2>Create Artist</h2>
+        <form action="" method="post">
+            <input type="text" name="name" placeholder="Artist Name" required>
+            <input type="hidden" name="action" value="add">
+            <button type="submit">Create Artist</button>
+        </form>
+    </body>
 </html>
