@@ -27,3 +27,11 @@
 Реализуйте уровень представления, используя любую технологию по вашему выбору, которая применима здесь.
 #### Задача 7
 Сделайте так, чтобы все работало вместе…
+
+#### В итоге получили следующее:
+
+![Java_1](https://github.com/user-attachments/assets/88c7909d-7bcd-490f-a687-934af49fd5a7)
+![Java_2](https://github.com/user-attachments/assets/cbde4361-52ab-497f-bb48-ce06e6bcd129)
+![Java_3](https://github.com/user-attachments/assets/79a0911a-1e78-4545-b239-3519d62c6f13)
+![Java_4](https://github.com/user-attachments/assets/de3ed595-174b-43e5-8e1f-79f1b14a8782)
+
